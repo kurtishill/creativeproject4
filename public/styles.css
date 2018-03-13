@@ -157,13 +157,12 @@ button {
 	margin-bottom: 2%;
 }
 
-.footer a {
+.footer {
 	position: relative;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 50px;
 	text-align: center;
+}
+
+.footer a {
 	text-decoration: none;
 	color: #26E807;
 }
