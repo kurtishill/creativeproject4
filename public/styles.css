@@ -157,6 +157,21 @@ button {
 	margin-bottom: 2%;
 }
 
+.footer, a {
+	position: relative;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 50px;
+	text-align: center;
+	text-decoration: none;
+	color: #26E807;
+}
+
+.footer a:hover {
+	color: #FF6F0D;
+}
+
 @media (min-width: 600px) {
 	.menu li {
 		display: block;
