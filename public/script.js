@@ -313,7 +313,7 @@ var takeQuizApp = new Vue({
 						for (var i = 0; i < this.quiz.quiz.length; i++) {
 							this.numRight += this.quiz.quiz[i].correct;
 						}
-						if (this.numRight > 5)
+						if (this.numRight >= this.quiz.quiz.length / 2)
 							this.encouragementText = 'Good job!';
 						else
 							this.encouragementText = 'Let\'s practice some more.';
@@ -417,7 +417,7 @@ var makeQuizApp = new Vue({
 				alert("Please choose a name for your quiz.")
 			}
 			else if (this.question !== '' || this.choice1 !== '' || this.choice2 !== '' || this.choice3 !== '' || this.correct !== '') {
-				if (confirm("There is information in the text boxes! If you continue this question will not be added. Continue anyway?")) {
+				if (confirm("There is information in the text boxes! If you continue, this question will not be added. Continue anyway?")) {
 					this.createHelper();
 				}
 			}

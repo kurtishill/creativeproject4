@@ -154,8 +154,6 @@ app.get("/api/kindergartenquizzes/new/takequiz/user/", (req, res) => {
 });
 
 app.put("/api/kindergartenquizzes/takequiz/user/:id", (req, res) => {
-	console.log(req.params.id);
-	console.log(currQuiz.quiz);
 	let id = parseInt(req.params.id);
 	let item = currQuiz.quiz[id];
 	item.correct = req.body.correct;
