@@ -7,16 +7,16 @@
 </head>
 <body>
 
-	<div id="color-app">
+	<div id="your-quizzes-app">
 		<div class="menu" id="topnav">
 			<nav class="navbar">
 		    	<div class="container">
 		       		<ul class="navbar-list">
 		       			<li class="navbar-item"><a class="navbar-link" href="index.html">Home</a></li>
 		       			<li class="navbar-item"><a class="navbar-link" href="math_quiz.html">Math Quiz</a></li>
-		       			<li class="navbar-item"><a class="navbar-link active" href="color_quiz.html">Color Quiz</a></li>
+		       			<li class="navbar-item"><a class="navbar-link" href="color_quiz.html">Color Quiz</a></li>
 		       			<li class="navbar-item"><a class="navbar-link" href="animal_quiz.html">Animal Quiz</a></li>
-		       			<li class="navbar-item"><a class="navbar-link" href="your_quizzes.html">Your Quizzes</a></li>
+		       			<li class="navbar-item"><a class="navbar-link active" href="your_quizzes.html">Your Quizzes</a></li>
 		       			<div class="dropdown">
 		       				<button class="dropbtn">&#9776
 		       					<i class="fa fa-caret-down"></i>
@@ -24,9 +24,9 @@
 		       				<div class="dropdown-content">
 		       					<a href="index.html">Home</a>
 	       						<a href="math_quiz.html">Math Quiz</a>
-	       						<a class="active" href="color_quiz.html">Color Quiz</a>
+	       						<a href="color_quiz.html">Color Quiz</a>
 	       						<a href="animal_quiz.html">Animal Quiz</a>
-	       						<a href="your_quizzes.html">Your Quizzes</a>
+	       						<a class="active" href="your_quizzes.html">Your Quizzes</a>
 		       				</div>
 		    			</div>
 	    			</ul>
@@ -34,39 +34,23 @@
 	  		</nav>
 	  	</div>
 
-	  	<div class="quiz" v-if="ready">
-	  		<h1>What color is this?</h1>
-	  		<div class="question">
-	  			<img class="quiz-pic" v-bind:src="colorQuiz[id].question">
-	  		</div>
-	  		<div v-for="answer in colorQuiz[id].choices">
-	  			<button class="choice-button"  v-on:click="clickAnswer(colorQuiz[id].choices[answer.num])">{{ answer.choice }}</button>
-	  		</div>
-	  		<button class="nav-button" v-on:click="prev()">Prev</button>
-	  		<button class="nav-button" v-on:click="submitAnswer()">{{ nextButtonText }}</button>
-	  		<div>
-	  			<h3>Question: {{ id+1 }} / 8</h3>
-	  		</div>
+	  	<div v-if="quizList.length === 0">
+	  		<h1 class="header">There are no quizzes available!</h1>
 	  	</div>
-	  	<div class="start-div" v-else>
-	  		<div v-if="complete">
-	  			<h1> You got {{ numRight }} / 8 correct! {{ encouragementText }}</h1>
-	  			<button class="start-button" v-on:click="startNewColorQuiz()">Retry?</button>
-	  		</div>
-	  		<div v-else>
-	  			<h1>Ready?</h1>
-	  			<button class="start-button" v-on:click="startColorQuiz()">Start</button>
-	  		</div>
+	  	<div v-else>
+	  		<ul>
+	  			<li class="quiz-list" v-for="quiz in quizList">
+	  				<h5>{{ quiz.name }}</h5>&nbsp&nbsp<h5 style="color: #FF6F0D;">{{ quiz.subject }}</h5>
+	  				<a href="take_quiz.html" style="text-decoration: none; margin-left: auto;"><button v-on:click="takeQuiz(quiz)" class="takequiz">Take Quiz</button></a>
+	  				<button v-on:click="deleteQuiz(quiz)" class="delete">X</button>
+	  			</li>
+	  		</ul>
 	  	</div>
+	  	<a href="make_quiz.html"><button class="start-button" style="margin: 2%;">Make a new quiz</button></a>
 
 	</div>
 
-	<div class="footer">
-		<a target="_blank" href="https://github.com/kurtishill/creativeproject4">GitHub</a>
-	</div>
-
-
-  	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js" integrity="sha256-pU9euBaEcVl8Gtg+FRYCtin2vKLN8sx5/4npZDmY2VA=" crossorigin="anonymous"></script>

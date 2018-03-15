@@ -72,6 +72,9 @@ animalQuiz.push({id:animalId++,question:"./images/tortoise.jpg",choices:[{choice
 animalQuiz.push({id:animalId++,question:"./images/zebra.jpg",choices:[{choice:"Horse",correct:false,num:0},
 	{choice:"Zebra",correct:true,num:1},{choice:"Tiger",correct:false,num:2}],correct:0});
 
+let userQuizzes = [];
+let currQuiz = [];
+
 
 app.get("/api/kindergartenquizzes/math/", (req, res) => {
 	res.send(mathQuiz);
@@ -127,6 +130,59 @@ app.put("/api/kindergartenquizzes/animal/:id", (req, res) => {
 	let item = animalQuiz[id];
 	item.correct = req.body.correct;
 	animalQuiz[id] = item;
+	res.sendStatus(200);
+});
+
+app.get("/api/kindergartenquizzes/user/", (req, res) => {
+	res.send(userQuizzes);
+});
+
+app.post("/api/kindergartenquizzes/user/", (req, res) => {
+	userQuizzes.push(req.body.quiz);
+	res.send(userQuizzes);
+});
+
+app.get("/api/kindergartenquizzes/takequiz/user/", (req, res) => {
+	res.send(currQuiz);
+});
+
+app.get("/api/kindergartenquizzes/new/takequiz/user/", (req, res) => {
+	for (var i = 0; i < currQuiz.length; i++) {
+		currQuiz[i].correct = 0;
+	}
+	res.send(currQuiz);
+});
+
+app.put("/api/kindergartenquizzes/takequiz/user/:id", (req, res) => {
+	console.log(req.params.id);
+	console.log(currQuiz.quiz);
+	let id = parseInt(req.params.id);
+	let item = currQuiz.quiz[id];
+	item.correct = req.body.correct;
+	currQuiz.quiz[id] = item;
+	res.sendStatus(200);
+});
+
+app.put("/api/kindergartenquizzes/user/", (req, res) => {
+	currQuiz = req.body.quiz;
+	res.sendStatus(200);
+});
+
+app.delete("/api/kindergartenquizzes/user/:name", (req, res) => {
+	let name = req.params.name;
+	console.log(name);
+	let removeIndex = -1;
+	for (var i = 0; i < userQuizzes.length; i++) {
+		if (userQuizzes[i].name === name) {
+			removeIndex = i;
+			break;
+		}
+	}
+	if (removeIndex === -1) {
+		res.status(404).send("Sorry, that item doesn't exist");
+		return;
+	}
+	userQuizzes.splice(removeIndex, 1);
 	res.sendStatus(200);
 });
 

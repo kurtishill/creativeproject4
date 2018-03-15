@@ -7,15 +7,15 @@ body {
 }
 
 h1 {
-	font-size: 3rem;
+	font-size: 2rem;
 }
 
 h3 {
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 }
 
 h5 {
-	font-size: 1.2rem;
+	font-size: 1rem;
 }
 
 .menu {
@@ -171,7 +171,97 @@ button {
 	color: #FF6F0D;
 }
 
-@media (min-width: 600px) {
+ul {
+    list-style: none;
+}
+
+.quiz-list {
+    background: #f9f9f9;
+    width: 80%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.delete {
+    display: none;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+}
+
+.quiz-list:hover .delete {
+    display: block;
+}
+
+.takequiz {
+	display: none;
+	margin-left: auto;
+	width: 100px;
+	height: 30px;
+	border-radius: 4px;
+}
+
+.quiz-list:hover .takequiz {
+	display: block;
+}
+
+
+#quiz-headers {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-template-rows: repeat(2, 1fr);
+	margin: 2%;
+	text-align: center;
+	width: 80%;
+}
+
+#make-quiz-inputs {
+	margin: 2%;
+	text-align: center;
+	display: grid;
+	width: 100%;
+	grid-template-columns: 1fr 3fr .25fr .25fr;
+	grid-template-rows: repeat(4, 1fr);
+}
+
+input[type=text] {
+    font-size: 1em;
+    margin-bottom: 10px;
+    padding: 20px;
+    padding-right: 100px;
+    margin-right: 10px;
+}
+
+span {
+	text-align: center;
+	margin: auto;
+	margin-right: 10px;
+}
+
+input[type=radio] {
+	margin: auto;
+	margin-right: 20px;
+}
+
+@media (min-width: 700px) {
+	h1 {
+		font-size: 3rem;
+	}
+
+	h3 {
+		font-size: 1.7rem;
+	}
+
+	h5 {
+		font-size: 1.2rem;
+	}
+
 	.menu li {
 		display: block;
 	}
@@ -186,6 +276,18 @@ button {
 
 	.quiz-pic {
 		width: 30%;
+	}
+
+	#quiz-headers {
+		width: 60%;
+	}
+
+	#make-quiz-inputs {
+		width: 70%;
+	}
+
+	.quiz-list {
+		width: 600px;
 	}
 
 }

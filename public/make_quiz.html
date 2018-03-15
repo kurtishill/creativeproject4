@@ -7,14 +7,14 @@
 </head>
 <body>
 
-	<div id="color-app">
+	<div id="make-quiz-app">
 		<div class="menu" id="topnav">
 			<nav class="navbar">
 		    	<div class="container">
 		       		<ul class="navbar-list">
 		       			<li class="navbar-item"><a class="navbar-link" href="index.html">Home</a></li>
 		       			<li class="navbar-item"><a class="navbar-link" href="math_quiz.html">Math Quiz</a></li>
-		       			<li class="navbar-item"><a class="navbar-link active" href="color_quiz.html">Color Quiz</a></li>
+		       			<li class="navbar-item"><a class="navbar-link" href="color_quiz.html">Color Quiz</a></li>
 		       			<li class="navbar-item"><a class="navbar-link" href="animal_quiz.html">Animal Quiz</a></li>
 		       			<li class="navbar-item"><a class="navbar-link" href="your_quizzes.html">Your Quizzes</a></li>
 		       			<div class="dropdown">
@@ -24,7 +24,7 @@
 		       				<div class="dropdown-content">
 		       					<a href="index.html">Home</a>
 	       						<a href="math_quiz.html">Math Quiz</a>
-	       						<a class="active" href="color_quiz.html">Color Quiz</a>
+	       						<a href="color_quiz.html">Color Quiz</a>
 	       						<a href="animal_quiz.html">Animal Quiz</a>
 	       						<a href="your_quizzes.html">Your Quizzes</a>
 		       				</div>
@@ -34,39 +34,26 @@
 	  		</nav>
 	  	</div>
 
-	  	<div class="quiz" v-if="ready">
-	  		<h1>What color is this?</h1>
-	  		<div class="question">
-	  			<img class="quiz-pic" v-bind:src="colorQuiz[id].question">
+	  	<div>
+	  		<h1 class="header">Enter the name of the quiz, the question, the options for that question, and select which option is the correct one!</h1>
+	  		<div id="quiz-headers">
+	  			<span >Name: </span><input type="text" placeholder="Name" v-model="name">
+	  			<span >Subject: </span><input type="text" placeholder="Optional: Subject" v-model="subject">
 	  		</div>
-	  		<div v-for="answer in colorQuiz[id].choices">
-	  			<button class="choice-button"  v-on:click="clickAnswer(colorQuiz[id].choices[answer.num])">{{ answer.choice }}</button>
-	  		</div>
-	  		<button class="nav-button" v-on:click="prev()">Prev</button>
-	  		<button class="nav-button" v-on:click="submitAnswer()">{{ nextButtonText }}</button>
-	  		<div>
-	  			<h3>Question: {{ id+1 }} / 8</h3>
-	  		</div>
-	  	</div>
-	  	<div class="start-div" v-else>
-	  		<div v-if="complete">
-	  			<h1> You got {{ numRight }} / 8 correct! {{ encouragementText }}</h1>
-	  			<button class="start-button" v-on:click="startNewColorQuiz()">Retry?</button>
-	  		</div>
-	  		<div v-else>
-	  			<h1>Ready?</h1>
-	  			<button class="start-button" v-on:click="startColorQuiz()">Start</button>
-	  		</div>
-	  	</div>
+	  		<div id="make-quiz-inputs">
+	       		<span>Question: </span><input type="text" placeholder="Question" v-model="question"><div></div><div></div>
+         		<span>Choice 1: </span><input type="text" placeholder="Choice 1" v-model="choice1"><span>Correct</span><input name="correct" id="one" type="radio" value="one" v-model="correct">
+         		<span>Choice 2: </span><input type="text" placeholder="Choice 2" v-model="choice2"><span>Correct</span><input name="correct" id="two" type="radio" value="two" v-model="correct">
+         		<span>Choice 3: </span><input type="text" placeholder="Choice 3" v-model="choice3"><span>Correct</span><input name="correct" id="three" type="radio" value="three" v-model="correct">
+         		<div></div>
+         		<button class="start-button" style="margin: auto; margin-bottom: 10px;" v-on:click="addQuestion()">Add Question</button><div></div><div></div><div></div>
+         		<button class="start-button" type="submit" style="margin: auto;" v-on:click="createQuiz()">Finish</button>
+         	</div>
+	    </div>
 
 	</div>
 
-	<div class="footer">
-		<a target="_blank" href="https://github.com/kurtishill/creativeproject4">GitHub</a>
-	</div>
-
-
-  	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js" integrity="sha256-pU9euBaEcVl8Gtg+FRYCtin2vKLN8sx5/4npZDmY2VA=" crossorigin="anonymous"></script>
