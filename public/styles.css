@@ -214,8 +214,10 @@ ul {
 
 #quiz-headers {
 	display: grid;
-	grid-template-columns: 1fr 3fr;
-	grid-template-rows: repeat(2, 1fr);
+	/*grid-template-columns: 1fr 3fr;
+	grid-template-rows: repeat(2, 1fr);*/
+	grid-template-columns: 25% 75%;
+	grid-template-rows: 50% 50%;
 	margin: 2%;
 	text-align: center;
 	width: 80%;
@@ -224,10 +226,12 @@ ul {
 #make-quiz-inputs {
 	margin: 2%;
 	text-align: center;
-	display: grid;
 	width: 100%;
-	grid-template-columns: 1fr 3fr .25fr .25fr;
-	grid-template-rows: repeat(4, 1fr);
+	display: grid;
+	/*grid-template-columns: 1fr 3fr .25fr .25fr;
+	grid-template-rows: repeat(4, 1fr);*/
+	grid-template-columns: 20% 60% 10% 8%;
+	grid-template-rows: 25% 25% 25% 25%;
 }
 
 input[type=text] {
