@@ -239,6 +239,10 @@ input[type=radio] {
 	margin-right: 20px;
 }
 
+hr {
+	width: 90%;
+}
+
 @media (min-width: 700px) {
 	h1 {
 		font-size: 3rem;
@@ -269,7 +273,7 @@ input[type=radio] {
 	}
 
 	#quiz-headers {
-		width: 60%;
+		width: 55%;
 	}
 
 	#make-quiz-inputs {
@@ -294,6 +298,12 @@ input[type=radio] {
 
 	.quiz-list:hover .takequiz {
 		display: block;
+	}
+
+	hr {
+		margin-left: 100px;
+		margin-right: 300px;
+		width: 60%;
 	}
 
 }
