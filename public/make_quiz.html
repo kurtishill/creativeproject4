@@ -37,9 +37,10 @@
 	  	<div>
 	  		<h1 class="header">Enter the name of the quiz, the question, the options for that question, and select which option is the correct one!</h1>
 	  		<div id="quiz-headers">
-	  			<span >Name: </span><input type="text" placeholder="Name" v-model="name">
-	  			<span >Subject: </span><input type="text" placeholder="Optional: Subject" v-model="subject">
+	  			<span ><strong>Name:</strong> </span><input type="text" placeholder="Name" v-model="name">
+	  			<span ><strong>Subject:</strong> </span><input type="text" placeholder="Optional: Subject" v-model="subject">
 	  		</div>
+	  		<hr/>
 	  		<div id="make-quiz-inputs">
 	       		<span>Question: </span><input type="text" placeholder="Question" v-model="question"><div></div><div></div>
          		<span>Choice 1: </span><input type="text" placeholder="Choice 1" v-model="choice1"><span>Correct</span><input name="correct" id="one" type="radio" value="one" v-model="correct">
